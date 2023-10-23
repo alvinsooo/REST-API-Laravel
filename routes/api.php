@@ -21,4 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([ 'namespace' => 'App\Http\Controllers\Api'], function () {
     Route::apiResource('students', StudentController::class);
+    Route::post('import-students', [StudentController::class, 'importStudents']) -> name('import');
+    Route::post('delete-students', [StudentController::class, 'deleteStudents']) -> name('delete');
+    Route::post('update-students', [StudentController::class, 'updateStudents']) -> name('update');
 });

@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Imports\StudentsUpdate;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Filters\StudentFilter;
 use App\Http\Resources\StudentCollection;
 use App\Http\Resources\StudentResource;
+use App\Imports\StudentsImport;
+use App\Imports\StudentsDelete;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StudentController extends Controller
 {
@@ -31,7 +35,23 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request)
     {
-        //
+        return new StoreStudentRequest(Student::create($request->all()));
+    }
+
+
+    public function importStudents(Request $request) 
+    {
+        Excel::import(new StudentsImport, $request -> file('file'));
+    }
+
+    public function deleteStudents(Request $request) 
+    {
+        Excel::import(new StudentsDelete, $request -> file('file'));
+    }
+
+    public function updateStudents(Request $request) 
+    {
+        Excel::import(new StudentsUpdate, $request -> file('file'));
     }
 
     /**
@@ -42,20 +62,13 @@ class StudentController extends Controller
         return new StudentResource($student);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Student $student)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        $student -> update($request->all());
     }
 
     /**
@@ -63,6 +76,6 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        Student::destroy($student->id);
     }
 }

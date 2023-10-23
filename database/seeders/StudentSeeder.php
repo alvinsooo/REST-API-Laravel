@@ -13,7 +13,7 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        //Create 100 students when the db starts
-        Student::factory()->count(100)->create();
+        //Create 20 students when the db starts
+        Student::factory()->count(20)->create();
     }
 }

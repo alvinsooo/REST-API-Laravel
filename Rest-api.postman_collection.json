@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "6245c5c9-bc0c-48eb-98b3-489e212931c3",
+		"name": "Rest-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26390505"
+	},
+	"item": [
+		{
+			"name": "Get all the student's Info",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/api/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/students?name[like]=t%",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"students"
+					],
+					"query": [
+						{
+							"key": "name[like]",
+							"value": "t%"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter by email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/api/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk Import (adding students's info)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZTJkNDg1MDgwYTBhNTBhOGI2M2ZiZDRlZGFmM2M1MjgwODdkYWZlOWI2NGFiMjZkZWIyMjJhOThiYjgwYjY2OTExMzE1ZTQxODI0ODNmZmEiLCJpYXQiOjE2OTgwNzY0MTAuODMyODIyLCJuYmYiOjE2OTgwNzY0MTAuODMyODI2LCJleHAiOjE3Mjk2OTg4MTAuNzE0MTU3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.edDFHjVZhHKW-tRaz0SZwHDqEGi-38jx_LdoWd9AvsoRFajrLJe1j_Pb17SMCrrYJ-kw_9FKWKgZ1hRBC-qPJcv4Kvsw4BNlQMbbtNEnLMwaCp4Tx_v7Fz6m_19ZrIXBiBXrACsEYbHsNJ4LCppYjRZ5epJefESE6nusmtSa5mS7vTNoURKThhYskycxobz44YjnxqhN7Ts1sJM-VJjLeK1yOHU43cSBnTjHsRSknvHFBIJEI63NKXnSozcoYc5BLTe7FJvN0wx3-KkQtpriHzUvYmoXUSlSJ1wePxSI6wpN5fvWEj-hUSNdhprnJTOrmxhRkKdqCotRHvZ1Tv_Ju_dtHPLP-RhJlOv-pYOy8wml5ViofoMAexU88rCTcOhLqbMUDaIWaAIpNwK5KWbzgBJqo4EIwhlGcKx54pKYQcQk4VUrjE5-DRC0rPrUbeYq9dpeqH3fXMClHHBK355YmteTsUrboQGtd5D8KIdvGOOqbj38K9oqhtCUV4kFbaqPW8bWGlOMssKNvtNN_fT8LNfKpOJu8VNKaIze2y2Yyj-EbxCptDhJVVLv43XcYZi_OLYGm-dB08pyp9Eom40YDHD98SGfkw5p_nlnaIBWB8ww9-T0Dt5umTGvEbOTa4OZuRvZof000nvrF_bvzrxTDgI5MkvEm8coixFdhKHU7Iw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/alvin/Desktop/import file.csv"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/api/import-students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"import-students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk Import (updating students's info)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZTJkNDg1MDgwYTBhNTBhOGI2M2ZiZDRlZGFmM2M1MjgwODdkYWZlOWI2NGFiMjZkZWIyMjJhOThiYjgwYjY2OTExMzE1ZTQxODI0ODNmZmEiLCJpYXQiOjE2OTgwNzY0MTAuODMyODIyLCJuYmYiOjE2OTgwNzY0MTAuODMyODI2LCJleHAiOjE3Mjk2OTg4MTAuNzE0MTU3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.edDFHjVZhHKW-tRaz0SZwHDqEGi-38jx_LdoWd9AvsoRFajrLJe1j_Pb17SMCrrYJ-kw_9FKWKgZ1hRBC-qPJcv4Kvsw4BNlQMbbtNEnLMwaCp4Tx_v7Fz6m_19ZrIXBiBXrACsEYbHsNJ4LCppYjRZ5epJefESE6nusmtSa5mS7vTNoURKThhYskycxobz44YjnxqhN7Ts1sJM-VJjLeK1yOHU43cSBnTjHsRSknvHFBIJEI63NKXnSozcoYc5BLTe7FJvN0wx3-KkQtpriHzUvYmoXUSlSJ1wePxSI6wpN5fvWEj-hUSNdhprnJTOrmxhRkKdqCotRHvZ1Tv_Ju_dtHPLP-RhJlOv-pYOy8wml5ViofoMAexU88rCTcOhLqbMUDaIWaAIpNwK5KWbzgBJqo4EIwhlGcKx54pKYQcQk4VUrjE5-DRC0rPrUbeYq9dpeqH3fXMClHHBK355YmteTsUrboQGtd5D8KIdvGOOqbj38K9oqhtCUV4kFbaqPW8bWGlOMssKNvtNN_fT8LNfKpOJu8VNKaIze2y2Yyj-EbxCptDhJVVLv43XcYZi_OLYGm-dB08pyp9Eom40YDHD98SGfkw5p_nlnaIBWB8ww9-T0Dt5umTGvEbOTa4OZuRvZof000nvrF_bvzrxTDgI5MkvEm8coixFdhKHU7Iw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/alvin/Desktop/import file.csv"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/api/import-students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"import-students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk Import (deleting students's info)",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZTJkNDg1MDgwYTBhNTBhOGI2M2ZiZDRlZGFmM2M1MjgwODdkYWZlOWI2NGFiMjZkZWIyMjJhOThiYjgwYjY2OTExMzE1ZTQxODI0ODNmZmEiLCJpYXQiOjE2OTgwNzY0MTAuODMyODIyLCJuYmYiOjE2OTgwNzY0MTAuODMyODI2LCJleHAiOjE3Mjk2OTg4MTAuNzE0MTU3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.edDFHjVZhHKW-tRaz0SZwHDqEGi-38jx_LdoWd9AvsoRFajrLJe1j_Pb17SMCrrYJ-kw_9FKWKgZ1hRBC-qPJcv4Kvsw4BNlQMbbtNEnLMwaCp4Tx_v7Fz6m_19ZrIXBiBXrACsEYbHsNJ4LCppYjRZ5epJefESE6nusmtSa5mS7vTNoURKThhYskycxobz44YjnxqhN7Ts1sJM-VJjLeK1yOHU43cSBnTjHsRSknvHFBIJEI63NKXnSozcoYc5BLTe7FJvN0wx3-KkQtpriHzUvYmoXUSlSJ1wePxSI6wpN5fvWEj-hUSNdhprnJTOrmxhRkKdqCotRHvZ1Tv_Ju_dtHPLP-RhJlOv-pYOy8wml5ViofoMAexU88rCTcOhLqbMUDaIWaAIpNwK5KWbzgBJqo4EIwhlGcKx54pKYQcQk4VUrjE5-DRC0rPrUbeYq9dpeqH3fXMClHHBK355YmteTsUrboQGtd5D8KIdvGOOqbj38K9oqhtCUV4kFbaqPW8bWGlOMssKNvtNN_fT8LNfKpOJu8VNKaIze2y2Yyj-EbxCptDhJVVLv43XcYZi_OLYGm-dB08pyp9Eom40YDHD98SGfkw5p_nlnaIBWB8ww9-T0Dt5umTGvEbOTa4OZuRvZof000nvrF_bvzrxTDgI5MkvEm8coixFdhKHU7Iw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/alvin/Desktop/import file.csv"
+						},
+						{
+							"key": "email",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/api/import-students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"import-students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get authentication code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/oauth/authorize?client_id=1&redirect_uri= https://http://localhost/callback&response_type=code&scop&state=abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"oauth",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "1"
+						},
+						{
+							"key": "redirect_uri",
+							"value": " https://http://localhost/callback"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "scop",
+							"value": null
+						},
+						{
+							"key": "state",
+							"value": "abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get code part 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://http/localhost/callback?code=def50200f782b7947c02e28f90bf3052005ef35d50ec8c0923210e667d1b1383dc5016ae6555fbdb222b36d288fd573b6bf95812a1ee9dcc4b3d341b6be4356e722a9bebcaf5c1ce9025e6ac023725be570fc6d57ef7072d269962ed9eee9dbc928ee0a94f64997e82d4870e4315a0560afd98acaf0270511a41a3d18ed88e5072f139740a2507faf6c1e2a8437b2c254b9589e7f67ec3bb856876f37cd2ea211987193545705204848405ad40df7f08a3442d814b275e92995baa8184d910eb5d7ccbc24fb8becb29932cab381723c1aff93765467e692319ec52a945c7bbe2dc4102dfd352c816bb2a97f110cf72ecf7408dd952de7742712fece8d5b32bfef0f0c0908e4ae486954fdba75d979a6bdc2813cdc0b8bd60bee1fe66d8ba4b09383dc5091ea68af1b45e5809e247d5ea6a94b0136602cd176d7e2917e09afc68e75e58caba9fd8d6746ebb9a87cce5c0add3a112b0a97c6c7737b72c71f6803244c62c&state=abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd",
+					"protocol": "https",
+					"host": [
+						"http"
+					],
+					"path": [
+						"",
+						"localhost",
+						"callback"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "def50200f782b7947c02e28f90bf3052005ef35d50ec8c0923210e667d1b1383dc5016ae6555fbdb222b36d288fd573b6bf95812a1ee9dcc4b3d341b6be4356e722a9bebcaf5c1ce9025e6ac023725be570fc6d57ef7072d269962ed9eee9dbc928ee0a94f64997e82d4870e4315a0560afd98acaf0270511a41a3d18ed88e5072f139740a2507faf6c1e2a8437b2c254b9589e7f67ec3bb856876f37cd2ea211987193545705204848405ad40df7f08a3442d814b275e92995baa8184d910eb5d7ccbc24fb8becb29932cab381723c1aff93765467e692319ec52a945c7bbe2dc4102dfd352c816bb2a97f110cf72ecf7408dd952de7742712fece8d5b32bfef0f0c0908e4ae486954fdba75d979a6bdc2813cdc0b8bd60bee1fe66d8ba4b09383dc5091ea68af1b45e5809e247d5ea6a94b0136602cd176d7e2917e09afc68e75e58caba9fd8d6746ebb9a87cce5c0add3a112b0a97c6c7737b72c71f6803244c62c"
+						},
+						{
+							"key": "state",
+							"value": "abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get access token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "bKEs1SGDd25tLKlSTvPzzNHcD6gzeKz4EnmiIsqH",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://http://localhost/callback",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "def50200b7448e58ff10a3d47d6d07ffd4b524671651ade5417849e8df61a1ff8a2f77bca672c505a8fca9262907449560f1cc208a8ddb12673e9073dae6eec0e5eb06475744af301be68a54ee1d0ee49e95f58c8c127f8a07534c50ba3ce65fceea46c7c51580e58a2bd45ea8cd2712379b657fa76780578f91ed14123c5e6274d85f102ace513b64ce90b74e96d97598b983728def80f3667dab9c017274dc0d21af835630f3d73201e64f4e31da75d396bdf7530c6b7115943bbb2bf209ac946fac4ee1e069a77ae85322854f2bd4907b5df276b7ed33b67b230616bafc65ddfa502f2b03df03507249126b85da6c48e61aa16db3364491d5c11ed250746be91db025a20666fd0bcadf75e93bdc4bb2f39a88f75b8f4bbe31f341d7600eae9e54d4123327b282a406fa60e1127634d3ee2720cc5621b8737e622a87b9fcbd93001c7b28d3bccdbfc999e0673a8c9e120d8e67ebd07766b10abc1d1b81f94e5f1fec",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

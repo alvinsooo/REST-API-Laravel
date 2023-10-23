@@ -15,13 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 Route::group([ 'namespace' => 'App\Http\Controllers\Api'], function () {
-    Route::apiResource('students', StudentController::class);
-    Route::post('import-students', [StudentController::class, 'importStudents']) -> name('import');
-    Route::post('delete-students', [StudentController::class, 'deleteStudents']) -> name('delete');
-    Route::post('update-students', [StudentController::class, 'updateStudents']) -> name('update');
+    Route::middleware('auth:api')-> apiResource('students', StudentController::class);
+    Route::middleware('auth:api')-> post('import-students', [StudentController::class, 'importStudents']) -> name('import');
+    Route::middleware('auth:api')-> post('delete-students', [StudentController::class, 'deleteStudents']) -> name('delete');
+    Route::middleware('auth:api')-> post('update-students', [StudentController::class, 'updateStudents']) -> name('update');
 });

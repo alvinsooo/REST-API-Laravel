@@ -41,17 +41,55 @@ class StudentController extends Controller
 
     public function importStudents(Request $request) 
     {
-        Excel::import(new StudentsImport, $request -> file('file'));
+        try{
+            Excel::import(new StudentsImport, $request -> file('file'));
+            return response()->json([
+                'message' => 'Students created successfully'
+            ], 200);
+
+
+        }
+        catch(\Exception $e){
+            return response()->json([
+                'message' => 'Fail to add students info'
+            ], 500);
+        }
+      
     }
 
     public function deleteStudents(Request $request) 
     {
-        Excel::import(new StudentsDelete, $request -> file('file'));
+        try{
+            Excel::import(new StudentsDelete, $request -> file('file'));
+            return response()->json([
+                'message' => 'Students deleted successfully'
+            ], 200);
+
+
+        }
+        catch(\Exception $e){
+            return response()->json([
+                'message' => 'Fail to delete students records'
+            ], 500);
+        }
     }
 
     public function updateStudents(Request $request) 
     {
-        Excel::import(new StudentsUpdate, $request -> file('file'));
+        try{
+            Excel::import(new StudentsUpdate, $request -> file('file'));
+            return response()->json([
+                'message' => 'Students info updated successfully'
+            ], 200);
+
+
+        }
+        catch(\Exception $e){
+            return response()->json([
+                'message' => 'Fail to update students info'
+            ], 500);
+        }
+
     }
 
     /**
